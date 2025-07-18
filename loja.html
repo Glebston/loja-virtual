@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grão Nobre - Cafés Especiais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* O CSS (estilos) permanece o mesmo da versão anterior */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; color: #6f4e37; }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav a { text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover { color: #6f4e37; }
+        .cart-icon { font-weight: 500; cursor: pointer; text-decoration: none; color: #333; } /* Tornando o link do carrinho sem sublinhado */
+        .banner-section { position: relative; width: 100%; height: 60vh; overflow: hidden; background-color: #f0f0f0; }
+        .banner-slider { display: flex; height: 100%; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; display: none; justify-content: center; align-items: center; text-align: center; }
+        .slide.active { display: flex; }
+        .banner-content { background-color: rgba(0, 0, 0, 0.5); color: #fff; padding: 2rem 4rem; border-radius: 5px; }
+        .banner-content h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .banner-section .prev, .banner-section .next { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); padding: 16px; color: white; font-weight: bold; font-size: 20px; background-color: rgba(0,0,0,0.3); border: none; transition: background-color 0.3s ease; user-select: none; }
+        .banner-section .prev:hover, .banner-section .next:hover { background-color: rgba(0,0,0,0.6); }
+        .banner-section .prev { left: 10px; }
+        .banner-section .next { right: 10px; }
+        .product-section { padding: 4rem 0; text-align: center; }
+        .product-section h2 { margin-bottom: 2rem; font-size: 2rem; color: #6f4e37; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .product-card { background: #fff; border: 1px solid #eee; border-radius: 8px; overflow: hidden; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; }
+        .product-card h3 { font-size: 1.2rem; padding: 1rem 1rem 0.5rem 1rem; }
+        .product-card .description { font-size: 0.9rem; color: #777; padding: 0 1rem 1rem 1rem; min-height: 60px; }
+        .product-card .price { font-size: 1.3rem; font-weight: 600; color: #333; padding: 0 1rem 1rem 1rem; }
+        .add-to-cart-btn { display: block; width: 100%; padding: 1rem; background-color: #6f4e37; color: #fff; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; }
+        .add-to-cart-btn:hover { background-color: #5a3e2b; }
+        footer { background-color: #333; color: #fff; text-align: center; padding: 2rem 0; margin-top: 2rem; }
+        @media (max-width: 768px) { header .container { flex-direction: column; gap: 10px; } nav ul { padding: 10px 0; } .banner-content { padding: 1.5rem 2rem; } .banner-content h2 { font-size: 1.8rem; } .banner-content p { font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">Grão Nobre</h1>
+            <nav>
+                <ul>
+                    <li><a href="loja.html">Início</a></li>
+                    <li><a href="loja.html#produtos">Produtos</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <a href="carrinho.html" class="cart-icon">
+                <span>🛒 Carrinho (<span id="cart-count">0</span>)</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner-section">
+            <div class="banner-slider">
+                <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1559496417-e7f25cb247f3');">
+                    <div class="banner-content">
+                        <h2>Colheita Selecionada</h2>
+                        <p>Os melhores grãos diretamente do produtor para sua xícara.</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1511920183353-3c7c9b25d1a5');">
+                     <div class="banner-content">
+                        <h2>Aroma que Conquista</h2>
+                        <p>Descubra a complexidade de sabores de um café especial.</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1621282273669-0295e0c65264');">
+                     <div class="banner-content">
+                        <h2>Paixão em Cada Gole</h2>
+                        <p>Acessórios que transformam seu ritual do café.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </section>
+
+        <section id="produtos" class="product-section">
+            <div class="container">
+                <h2>Nossos Produtos</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Grãos do Cerrado Mineiro">
+                        <h3>Grãos do Cerrado Mineiro</h3>
+                        <p class="description">Notas de chocolate e caramelo. Torra média. 250g.</p>
+                        <p class="price">R$ 35,00</p>
+                        <button class="add-to-cart-btn" data-id="1" data-name="Grãos do Cerrado Mineiro" data-price="35.00">Adicionar ao Carrinho</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1608695222013-11ac3044a8a0" alt="Blend da Mantiqueira">
+                        <h3>Blend da Mantiqueira</h3>
+                        <p class="description">Acidez cítrica com notas frutadas. Torra clara. 250g.</p>
+                        <p class="price">R$ 42,00</p>
+                        <button class="add-to-cart-btn" data-id="2" data-name="Blend da Mantiqueira" data-price="42.00">Adicionar ao Carrinho</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1599160539343-34e2c2196057" alt="Café Orgânico da Chapada">
+                        <h3>Café Orgânico da Chapada</h3>
+                        <p class="description">Corpo aveludado com doçura elevada. Cultivo 100% orgânico. 250g.</p>
+                        <p class="price">R$ 45,00</p>
+                        <button class="add-to-cart-btn" data-id="3" data-name="Café Orgânico da Chapada" data-price="45.00">Adicionar ao Carrinho</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1563897732938-8a3a80801119" alt="Prensa Francesa Clássica">
+                        <h3>Prensa Francesa Clássica</h3>
+                        <p class="description">Prepare um café encorpado e rico em óleos essenciais. 350ml.</p>
+                        <p class="price">R$ 89,90</p>
+                        <button class="add-to-cart-btn" data-id="4" data-name="Prensa Francesa Clássica" data-price="89.90">Adicionar ao Carrinho</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1625937326466-263a23f393b3" alt="Moedor de Café Manual">
+                        <h3>Moedor de Café Manual</h3>
+                        <p class="description">Moa seus grãos na hora e preserve o máximo de aroma e sabor. Ajustável.</p>
+                        <p class="price">R$ 120,00</p>
+                        <button class="add-to-cart-btn" data-id="5" data-name="Moedor de Café Manual" data-price="120.00">Adicionar ao Carrinho</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1617886944358-769c356955ac" alt="Caneca Esmaltada Grão Nobre">
+                        <h3>Caneca Esmaltada Grão Nobre</h3>
+                        <p class="description">Estilo retrô para seu momento do café. Resistente e charmosa. 200ml.</p>
+                        <p class="price">R$ 25,00</p>
+                        <button class="add-to-cart-btn" data-id="6" data-name="Caneca Esmaltada Grão Nobre" data-price="25.00">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Grão Nobre. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // O JavaScript continua o mesmo da versão anterior
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            let currentSlide = 0;
+            let slideInterval;
+            function showSlide(index) { slides.forEach((slide, i) => { slide.classList.remove('active'); if (i === index) { slide.classList.add('active'); } }); }
+            function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+            function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+            function startSlideShow() { slideInterval = setInterval(nextSlide, 5000); }
+            function stopSlideShow() { clearInterval(slideInterval); }
+            nextBtn.addEventListener('click', () => { nextSlide(); stopSlideShow(); startSlideShow(); });
+            prevBtn.addEventListener('click', () => { prevSlide(); stopSlideShow(); startSlideShow(); });
+            showSlide(currentSlide);
+            startSlideShow();
+            const cartCountElement = document.getElementById('cart-count');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            function updateCartCount() { cartCountElement.textContent = cart.reduce((total, item) => total + item.quantity, 0); }
+            function addToCart(event) {
+                const button = event.target;
+                const productId = button.dataset.id;
+                const productName = button.dataset.name;
+                const productPrice = parseFloat(button.dataset.price);
+                const existingProductIndex = cart.findIndex(item => item.id === productId);
+                if (existingProductIndex > -1) {
+                    cart[existingProductIndex].quantity += 1;
+                    alert(`Mais uma unidade de "${productName}" foi adicionada ao carrinho!`);
+                } else {
+                    cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+                    alert(`"${productName}" foi adicionado ao carrinho!`);
+                }
+                saveCart();
+                updateCartCount();
+            }
+            function saveCart() { localStorage.setItem('shoppingCart', JSON.stringify(cart)); }
+            addToCartButtons.forEach(button => { button.addEventListener('click', addToCart); });
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
