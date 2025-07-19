@@ -55,18 +55,16 @@
             </div>
     </main>
 
-    <script>
+   <script>
         document.addEventListener('DOMContentLoaded', () => {
             // ===================================================================
-            // ATENÇÃO: Coloque o seu número de telefone com o código do país aqui!
-            // Exemplo para o Brasil: 5511912345678 (55 país, 11 DDD, 912345678 número)
+            // SEU NÚMERO CONFIGURADO CORRETAMENTE ABAIXO
             const seuNumeroWhatsapp = "5583991025643"; 
             // ===================================================================
 
             const cartContent = document.getElementById('cart-content');
             let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
             
-            // Mapeamento de IDs de produtos para imagens (para exibir no carrinho)
             const productImages = {
                 '1': 'https://images.unsplash.com/photo-1509042239860-f550ce710b93',
                 '2': 'https://images.unsplash.com/photo-1608695222013-11ac3044a8a0',
@@ -85,7 +83,6 @@
                 if (item) {
                     item.quantity = newQuantity;
                     if (item.quantity <= 0) {
-                        // Remove o item se a quantidade for 0 ou menor
                         cart = cart.filter(p => p.id !== productId);
                     }
                     saveCart();
@@ -172,7 +169,6 @@
                     </div>
                 `;
 
-                // Adicionar "escutadores" de eventos aos novos botões e inputs
                 document.querySelectorAll('.quantity-input').forEach(input => {
                     input.addEventListener('change', (e) => {
                         const newQuantity = parseInt(e.target.value, 10);
@@ -190,10 +186,8 @@
 
                 document.getElementById('checkout-btn').addEventListener('click', (e) => {
                     e.preventDefault();
-                    if(seuNumeroWhatsapp === "5583991025643") {
-                        alert("Por favor, configure o seu número de WhatsApp no código do arquivo carrinho.html antes de continuar.");
-                        return;
-                    }
+                    
+                    // A VERIFICAÇÃO DE ERRO FOI REMOVIDA DAQUI
 
                     let message = "Olá! Gostaria de fazer um pedido:\n\n";
                     cart.forEach(item => {
@@ -207,9 +201,6 @@
                 });
             }
 
-            // Renderiza o carrinho assim que a página carrega
             renderCart();
         });
     </script>
-</body>
-</html>
